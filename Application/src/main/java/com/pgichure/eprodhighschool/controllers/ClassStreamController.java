@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pgichure.eprodhighschool.dtos.ClassStreamDto;
+import com.pgichure.eprodhighschool.dtos.StudentDto;
 import com.pgichure.eprodhighschool.services.ClassStreamServiceI;
+import com.pgichure.eprodhighschool.services.StudentServiceI;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -35,6 +37,8 @@ import lombok.RequiredArgsConstructor;
 public class ClassStreamController {
 	
 	private final ClassStreamServiceI service;
+	
+	private final StudentServiceI studentService;
 
 	@PostMapping
 	@ApiOperation(value = "Save a class" ,notes = "Returns the object created.", response = ClassStreamDto.class)
@@ -100,5 +104,18 @@ public class ClassStreamController {
 			@ApiParam(value = "Stream details to be updated in database table", required = true)
 			@RequestBody ClassStreamDto stream){
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.update(id, stream));
+	}
+	
+	@GetMapping("/{id}/students")
+	@ApiOperation(value = "View a list of students for a stream", response = List.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully retrieved list"),
+			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+	})
+	public ResponseEntity<?> getStudents(@PathVariable @ApiParam(value = "The ID of the stream", required = true) Long streamId){
+		List<StudentDto> students  = studentService.findByStreamId(streamId);
+		return students == null ?  ResponseEntity.ok().body("There is no students for the stream ID "+streamId) : ResponseEntity.ok().body(students);
 	}
 }

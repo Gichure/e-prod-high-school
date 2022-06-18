@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pgichure.eprodhighschool.dtos.StudentDto;
 import com.pgichure.eprodhighschool.services.StudentServiceI;
@@ -69,6 +70,19 @@ public class StudentController {
 	})
 	public ResponseEntity<List<StudentDto>> get(){
 		return ResponseEntity.ok().body(service.findAll());
+	}
+	
+	@GetMapping
+	@ApiOperation(value = "View a list of students", response = List.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully retrieved list"),
+			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+	})
+	public ResponseEntity<?> get(@RequestParam @ApiParam(value = "The name of the student to search") String name){
+		List<StudentDto> students  = service.findByName(name);
+		return students == null ?  ResponseEntity.ok().body("There is no student with the name "+name) : ResponseEntity.ok().body(students);
 	}
 	
 	@DeleteMapping("/{id}")
