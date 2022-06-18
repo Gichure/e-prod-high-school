@@ -30,6 +30,6 @@ public interface StudentRepository extends JpaRepository<Student, Long>{
 	 * @param name
 	 * @return List<Student>
 	 */
-	public List<Student> findAllByFirstNameOrLastName(String name);
+	public List<Student> findAllByFirstNameOrLastName(String firstName, String lastName);
 
 }

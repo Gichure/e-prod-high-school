@@ -38,5 +38,12 @@ public interface ClassStreamServiceI {
 	 * @return
 	 */
 	public List<ClassStreamDto> findAll();
+
+	/**
+	 * Delete stream by ID
+	 * @param id
+	 * @return
+	 */
+	public ClassStreamDto delete(Long id);
 	
 }

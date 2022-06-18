@@ -55,5 +55,12 @@ public interface StudentServiceI {
 	 * @return
 	 */
 	public List<StudentDto> findByName(String name);
+
+	/**
+	 * Delete by ID
+	 * @param id
+	 * @return
+	 */
+	public StudentDto delete(Long id);
 	
 }

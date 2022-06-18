@@ -70,8 +70,15 @@ public class StudentService implements StudentServiceI {
 
 	@Override
 	public List<StudentDto> findByName(String name) {
-		List<Student> students = repository.findAllByFirstNameOrLastName(name);
+		List<Student> students = repository.findAllByFirstNameOrLastName(name, name);
 		return students.stream().map(student -> modelMapper.map(student, StudentDto.class)).collect(Collectors.toList());
+	}
+	
+	@Override
+	public StudentDto delete(Long id) {
+		Optional<Student> student = repository.findById(id);
+		repository.deleteById(id);
+		return modelMapper.map(student.get(),StudentDto.class);
 	}
 
 }

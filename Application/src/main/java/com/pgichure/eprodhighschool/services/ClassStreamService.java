@@ -61,5 +61,12 @@ public class ClassStreamService implements ClassStreamServiceI{
 		return streams.stream().map(stream -> modelMapper.map(stream, ClassStreamDto.class)).collect(Collectors.toList());
 	}
 
+	@Override
+	public ClassStreamDto delete(Long id) {
+		Optional<ClassStream> stream = repository.findById(id);
+		repository.deleteById(id);
+		return modelMapper.map(stream.get(),ClassStreamDto.class);
+	}
+
 	
 }
