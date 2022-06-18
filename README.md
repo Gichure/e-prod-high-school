@@ -3,7 +3,7 @@ This web-based application provides APIs to manage Classes and Students for E-Pr
 
 ### Setup
 -  Create MySQL database e_prod_school_db with username dev and password Dev123#@!
--  Import the database dump in /Database folder
+-  (The database shall be generated automatically)
 -  Ensure you have JDK 17+
 -  Have Maven 3.5+ setup in the PC you are using
 -  Have Git 2.0+ installed in your PC
