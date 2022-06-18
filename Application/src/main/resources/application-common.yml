@@ -1,0 +1,30 @@
+spring:   
+  application:
+    name: e-prod-high-school
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 2MB
+      max-request-size: 4MB
+  main:
+    banner-mode: "off"
+  thymeleaf:
+    cache: false
+    check-template: true
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+logging:
+  file: e-prod-high-school-log.txt
+  logging.path: /var/log
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n'
+  level:
+    org:
+      hibernate:
+        SQL: info
