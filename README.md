@@ -14,6 +14,7 @@ This web-based application provides APIs to manage Classes and Students for E-Pr
 -  Run the command mvn clean spring-boot:run
 
 ### Enpoints
+Browse to http://localhost:9191/swagger-ui/index.html  
 -  Create a Class
 -  View Class
 -  View all the class streams.

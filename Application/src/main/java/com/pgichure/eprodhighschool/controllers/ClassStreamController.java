@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.pgichure.eprodhighschool.dtos.ClassStreamDto;
 import com.pgichure.eprodhighschool.dtos.StudentDto;
 import com.pgichure.eprodhighschool.services.ClassStreamServiceI;
 import com.pgichure.eprodhighschool.services.StudentServiceI;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -32,8 +34,10 @@ import lombok.RequiredArgsConstructor;
  * The ClassStream controller
  *
  */
+@RestController
 @RequestMapping(value = "/classes")
 @RequiredArgsConstructor
+@Api(tags = "Class Stream", description = "Operations on class object")
 public class ClassStreamController {
 	
 	private final ClassStreamServiceI service;

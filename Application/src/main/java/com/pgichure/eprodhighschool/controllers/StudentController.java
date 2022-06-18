@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.pgichure.eprodhighschool.dtos.StudentDto;
 import com.pgichure.eprodhighschool.services.StudentServiceI;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -30,8 +32,10 @@ import lombok.RequiredArgsConstructor;
  * The Student Controller
  *
  */
+@RestController
 @RequestMapping(value = "/students")
 @RequiredArgsConstructor
+@Api(tags = "Student", description = "Operations on student object")
 public class StudentController {
 	
 	private final StudentServiceI service;
@@ -72,8 +76,8 @@ public class StudentController {
 		return ResponseEntity.ok().body(service.findAll());
 	}
 	
-	@GetMapping
-	@ApiOperation(value = "View a list of students", response = List.class)
+	@GetMapping("/search")
+	@ApiOperation(value = "Get students by name", response = List.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successfully retrieved list"),
 			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
