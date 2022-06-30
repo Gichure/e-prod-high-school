@@ -77,5 +77,6 @@ workflows:
           notes-file: changelog.md
           requires:
             - build-and-test
-          tag: 1.0.0
+          tag: 1.0.1
+          files: target/*.jar
           title: The latest release
