@@ -68,8 +68,6 @@ workflows:
     jobs:
       - build-and-test
       - github-cli/release:
-          context:
-            - GITHUB_CREDS
           filters:
             branches:
               only:
