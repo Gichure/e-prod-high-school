@@ -118,8 +118,8 @@ public class ClassStreamController {
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
 	})
-	public ResponseEntity<?> getStudents(@PathVariable @ApiParam(value = "The ID of the stream", required = true) Long streamId){
-		List<StudentDto> students  = studentService.findByStreamId(streamId);
-		return students == null ?  ResponseEntity.ok().body("There is no students for the stream ID "+streamId) : ResponseEntity.ok().body(students);
+	public ResponseEntity<?> getStudents(@PathVariable @ApiParam(value = "The ID of the stream", required = true) Long id){
+		List<StudentDto> students  = studentService.findByStreamId(id);
+		return students == null ?  ResponseEntity.ok().body("There is no students for the stream ID "+id) : ResponseEntity.ok().body(students);
 	}
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>E-Prod High School - Edit Class</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a  href="/classes/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Classes</a>
+                </h3>
+                <h2>Edit Class</h2>
+                <form th:action="@{'/classes/update/' + ${class.id}}">
+                    <div class="form-group">
+                        <label for="email">Class Name:</label>
+                        <input type="text" class="form-control" name="dto.name" th:value="${class.name}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Class Code</label>
+                        <input type="text" class="form-control" name="dto.code" th:value="${class.code}" />
+                    </div>
+                    <input type="hidden" name="dto.id" th:value="${class.id}" />
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

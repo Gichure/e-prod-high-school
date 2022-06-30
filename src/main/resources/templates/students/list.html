@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>E-Prod High School - Students List</title>
+    </head>
+    <body>
+        <div layout:fragment="content" student="row">
+            <div student="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/students/create" student="btn btn-primary"><span student="glyphicon glyphicon-plus-sign"></span> New Student</a>
+                </h3>
+                <h2>Students List</h2>
+                <div student="table-responsive">
+                    <table student="table" id="student-table">
+                        <thead>
+                            <tr>
+                            	<th>Registration #</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>DOB</th>
+                                <th>Class</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="student : ${students}">
+                                <td><a th:text="${student.registrationNumber}" th:href="@{'/students/view/' + ${student.id}}"></a></td>
+                                <td th:text="${student.firstName}"></td>
+                                <td th:text="${student.lastName)}"></td>
+                                <td th:text="${student.dateOfBirth)}"></td>
+                                <td th:text="${student.stream.name}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
