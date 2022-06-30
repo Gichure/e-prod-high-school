@@ -1,7 +1,8 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-
+orbs: 
+  github-cli: circleci/github-cli@2.1.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -57,12 +58,24 @@ jobs:
           path: ~/test-results
       - store_artifacts:
           name: Archiving Jar File
-          path: target/e-prod-high-school 0.0.1-SNAPSHOT.jar
+          path: target/e-prod-high-school-0.0.1-SNAPSHOT.jar
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  packaging: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
+      - github-cli/release:
+          context:
+            - GITHUB_CREDS
+          filters:
+            branches:
+              only:
+                - main
+          notes-file: changelog.md
+          requires:
+            - build-and-test
+          tag: 1.0.0
+          title: The initial release
