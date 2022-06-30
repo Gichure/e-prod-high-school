@@ -78,4 +78,4 @@ workflows:
           requires:
             - build-and-test
           tag: 1.0.0
-          title: The initial release
+          title: The latest release
