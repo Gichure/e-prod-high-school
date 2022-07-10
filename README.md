@@ -32,9 +32,40 @@ Browse to http://localhost:9191/swagger-ui/index.html
 -  View Class  
 http://localhost:9191/classes/1 
 -  View all the class streams
-
+`` curl -X GET "http://localhost:9191/classes" -H  "accept: application/json" ``
+``
+[
+  {
+    "id": 1,
+    "name": "Form 1 A",
+    "code": "F1A"
+  },
+  {
+    "id": 2,
+    "name": "Form 1 B",
+    "code": "F1B"
+  },
+  {
+    "id": 3,
+    "name": "Form 1 C",
+    "code": "F1C"
+  },
+  {
+    "id": 4,
+    "name": "Form 1 D",
+    "code": "F1D"
+  }
+]
+``
 -  View a single class stream
-
+`` curl -X GET "http://localhost:9191/classes/2" -H  "accept: application/json" ``
+``
+{
+  "id": 2,
+  "name": "Form 1 B",
+  "code": "F1B"
+}
+``
 -  Capture student’s data
 -  Assign a student to a particular class stream
 -  Edit student’s data
