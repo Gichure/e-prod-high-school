@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.pgichure</groupId>
 	<artifactId>e-prod-high-school</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>e-prod-high-school</name>
 	<description>School Management System</description>
 	<properties>
@@ -74,6 +74,7 @@
         </dependency>
 	</dependencies>
 	<build>
+	   <finalName>${project.artifactId}-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

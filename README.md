@@ -9,6 +9,7 @@ This web-based application provides APIs to manage Classes and Students for E-Pr
 -  Thymeleaf
 -  OpenAPi(Swagger)
 -  MySQL
+-  Bootstrap CSS
 
 ### Setup
 -  Create MySQL user e_prod and password Eprod123#@!. Om running the application, required database and database objects shall be created.
@@ -23,6 +24,8 @@ This web-based application provides APIs to manage Classes and Students for E-Pr
 
 ### Endpoints
 Browse to http://localhost:9191/swagger-ui/index.html  
+![APIs Home](images/apis-home.png)
+
 -  Create a Class  
 curl -X POST "http://localhost:9191/classes" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{  \"code\": \"F1A\",  \"name\": \"Form 1 A\"}"  
 -  View Class  
