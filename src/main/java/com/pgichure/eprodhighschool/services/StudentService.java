@@ -10,9 +10,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import com.pgichure.eprodhighschool.dtos.ClassStreamDto;
 import com.pgichure.eprodhighschool.dtos.StudentDto;
-import com.pgichure.eprodhighschool.models.ClassStream;
 import com.pgichure.eprodhighschool.models.Student;
 import com.pgichure.eprodhighschool.repositories.StudentRepository;
 
