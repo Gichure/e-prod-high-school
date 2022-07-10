@@ -1,4 +1,4 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Gichure/e-prod-high-school/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Gichure/e-prod-high-school/tree/main)  
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Gichure/e-prod-high-school/tree/develop.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Gichure/e-prod-high-school/tree/develop)  
 # E-Prod High School System
 This web-based application provides APIs to manage Classes and Students for E-Prod High School
 
