@@ -1,6 +1,15 @@
 # E-Prod High School System
 This web-based application provides APIs to manage Classes and Students for E-Prod High School
 
+### Technology Stack
+-  Java 17
+-  Spring Boot 2.7
+-  Spring Data
+-  REST APIs
+-  Thymeleaf
+-  OpenAPi(Swagger)
+-  MySQL
+
 ### Setup
 -  Create MySQL user e_prod and password Eprod123#@!. Om running the application, required database and database objects shall be created.
 -  Ensure you have JDK 17+ installed
@@ -12,7 +21,7 @@ This web-based application provides APIs to manage Classes and Students for E-Pr
 -  Change the working directory to cd Application
 -  Run the command mvn clean spring-boot:run
 
-### Enpoints
+### Endpoints
 Browse to http://localhost:9191/swagger-ui/index.html  
 -  Create a Class  
 curl -X POST "http://localhost:9191/classes" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{  \"code\": \"F1A\",  \"name\": \"Form 1 A\"}"  
