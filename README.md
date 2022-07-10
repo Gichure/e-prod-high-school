@@ -66,14 +66,138 @@ http://localhost:9191/classes/1
   "code": "F1B"
 }
 ``
--  Capture student’s data
+-  Capture student’s data  
+`` curl -X POST "http://localhost:9191/students" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{  \"dateOfBirth\": \"2020-07-10\",  \"firstName\": \"Paul\",  \"lastName\": \"Gichure\",  \"registrationNumber\": \"2022/001\",  \"stream\": {   \"id\": 1 }}" ``
+
+**Response body**
+``
+{
+  "id": 1,
+  "firstName": "Paul",
+  "lastName": "Gichure",
+  "registrationNumber": "2022/001",
+  "dateOfBirth": 1594339200000,
+  "stream": {
+    "id": 1,
+    "name": "Form 1 A",
+    "code": "F1A"
+  }
+}
+``
 -  Assign a student to a particular class stream
 -  Edit student’s data
 -  Delete a student’s data
 -  View a single student’s data
+`` curl -X GET "http://localhost:9191/students/3" -H  "accept: application/json" ``  
+``
+**Response body**
+Download
+
+{
+  "id": 3,
+  "firstName": "Mary",
+  "lastName": "Doe",
+  "registrationNumber": "2022/003",
+  "dateOfBirth": 1594339200000,
+  "stream": {
+    "id": 2,
+    "name": "Form 1 B",
+    "code": "F1B"
+  }
+} ``
+
 -  View all the students
--  View students that belong to a particular class stream.
--  Search for a student by name
+`` curl -X GET "http://localhost:9191/students" -H  "accept: application/json" ``  
+**Response body**
+``
+[
+  {
+    "id": 1,
+    "firstName": "Paul",
+    "lastName": "Gichure",
+    "registrationNumber": "2022/001",
+    "dateOfBirth": 1594339200000,
+    "stream": {
+      "id": 1,
+      "name": "Form 1 A",
+      "code": "F1A"
+    }
+  },
+  {
+    "id": 2,
+    "firstName": "John",
+    "lastName": "Doe",
+    "registrationNumber": "2022/002",
+    "dateOfBirth": 1594339200000,
+    "stream": {
+      "id": 1,
+      "name": "Form 1 A",
+      "code": "F1A"
+    }
+  },
+  {
+    "id": 3,
+    "firstName": "Mary",
+    "lastName": "Doe",
+    "registrationNumber": "2022/003",
+    "dateOfBirth": 1594339200000,
+    "stream": {
+      "id": 2,
+      "name": "Form 1 B",
+      "code": "F1B"
+    }
+  }
+]
+``
+-  View students that belong to a particular class stream.  
+`` curl -X GET "http://localhost:9191/classes/2/students" -H  "accept: application/json" ``  
+``
+[
+  {
+    "id": 3,
+    "firstName": "Mary",
+    "lastName": "Doe",
+    "registrationNumber": "2022/003",
+    "dateOfBirth": 1594339200000,
+    "stream": {
+      "id": 2,
+      "name": "Form 1 B",
+      "code": "F1B"
+    }
+  }
+]
+``  
+
+-  Search for a student by name  
+`` curl -X GET "http://localhost:9191/students/search?name=doe" -H  "accept: application/json" ``  
+**Response Body**
+``
+[
+  {
+    "id": 2,
+    "firstName": "John",
+    "lastName": "Doe",
+    "registrationNumber": "2022/002",
+    "dateOfBirth": 1594339200000,
+    "stream": {
+      "id": 1,
+      "name": "Form 1 A",
+      "code": "F1A"
+    }
+  },
+  {
+    "id": 3,
+    "firstName": "Mary",
+    "lastName": "Doe",
+    "registrationNumber": "2022/003",
+    "dateOfBirth": 1594339200000,
+    "stream": {
+      "id": 2,
+      "name": "Form 1 B",
+      "code": "F1B"
+    }
+  }
+] ``
 
 ### Author
 Paul Gichure
