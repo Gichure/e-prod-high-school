@@ -113,7 +113,7 @@ public class StudentController {
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
 	})
 	public ResponseEntity<StudentDto> update(
-			@ApiParam(value = "The ID of the student to delete", required = true) Long id,
+			@ApiParam(value = "The ID of the student to update", required = true) Long id,
 			@ApiParam(value = "Student details to be updated in database table", required = true)
 			@RequestBody StudentDto student){
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.update(id, student));
